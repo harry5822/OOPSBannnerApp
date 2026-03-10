@@ -1,26 +1,65 @@
 /**
  * OOPSBannerApp
- * UC5 – Render OOPS banner using Inline Array Initialization
+ * UC6 – Refactor Banner Logic into Functions
  */
 
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
 
-        // Declare and initialize array in one step
-        String[] banner = {
-            String.join(" ", " *** ", " *** ", " **** ", " **** "),
-            String.join(" ", "*   *", "*   *", "*   *", "*    "),
-            String.join(" ", "*   *", "*   *", "*   *", "*    "),
-            String.join(" ", "*   *", "*   *", "**** ", " *** "),
-            String.join(" ", "*   *", "*   *", "*    ", "    *"),
-            String.join(" ", "*   *", "*   *", "*    ", "    *"),
-            String.join(" ", " *** ", " *** ", "*    ", "**** ")
-        };
+        String[] o = getOPattern();
+        String[] p = getPPattern();
+        String[] s = getSPattern();
 
-        // Print banner using enhanced for loop
+        // Build banner lines
+        String[] banner = new String[7];
+
+        for (int i = 0; i < 7; i++) {
+            banner[i] = String.join(" ", o[i], o[i], p[i], s[i]);
+        }
+
+        // Print banner
         for (String line : banner) {
             System.out.println(line);
         }
+    }
+
+    // Method to create pattern for O
+    public static String[] getOPattern() {
+        return new String[]{
+            " *** ",
+            "*   *",
+            "*   *",
+            "*   *",
+            "*   *",
+            "*   *",
+            " *** "
+        };
+    }
+
+    // Method to create pattern for P
+    public static String[] getPPattern() {
+        return new String[]{
+            "**** ",
+            "*   *",
+            "*   *",
+            "**** ",
+            "*    ",
+            "*    ",
+            "*    "
+        };
+    }
+
+    // Method to create pattern for S
+    public static String[] getSPattern() {
+        return new String[]{
+            " ****",
+            "*    ",
+            "*    ",
+            " *** ",
+            "    *",
+            "    *",
+            "**** "
+        };
     }
 }
